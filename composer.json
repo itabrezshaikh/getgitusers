@@ -1,0 +1,20 @@
+{
+    "name": "itabrezshaikh/getgitusers",
+    "type": "library",
+    "description": "to seach github users according to their language, location and download ",
+    "keywords": ["Github api php client","GitHub php client","Download github users"],
+    "homepage": "http://tabrez.me/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tabby.",
+            "email": "itabrezshaikh@gmail.com",
+            "homepage": "https://github.com/itabrezshaikh",
+            "role": "Co-Founder/Developer."
+        }
+    ],
+    "require": {
+        "rmccue/requests": "^1.6",
+        "joshcam/mysqli-database-class": "dev-master"
+    }
+}
