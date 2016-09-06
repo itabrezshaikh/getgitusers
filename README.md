@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://s13.postimg.org/5a1vswjyf/cat.gif" alt="Oh My Zsh">
+</p>
+
 ABOUT
 ============
 Very quick script, to seach github users according to their language, location and download inside a MySQL table
