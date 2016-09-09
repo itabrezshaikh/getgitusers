@@ -8,10 +8,16 @@ Very quick script, to seach github users according to their language, location a
 
 INSTALLATION
 ============
+***Download the code***
+```
+mkdir getgitusers
+cd getgitusers
+git clone https://github.com/itabrezshaikh/getgitusers.git .
+```
+
 ***Install dependencies***
 ```
-composer.phar require rmccue/requests
-composer.phar require joshcam/mysqli-database-class:dev-master
+php composer.phar install
 ```
 
 ***Create database and table***
