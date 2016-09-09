@@ -14,16 +14,20 @@ class GetGitUsers {
         //modify these params-------------
         $this->test_mode = 0;
         $this->db = new MysqliDb ('yourlocalhost', 'yourdbuser', 'yourdbpass', 'yourdbname');
+        $this->access_token = '';//yoursecret token
         $language = 'php';
-        $location = 'mumbai';
+        $location = 'california';
         $sort = 'followers';
         //--------------------------------
         $order='desc';
-        $this->interval = 60 * 35;//in seconds
+        $this->interval = 60 * 1;//in seconds
         $this->records_per_page = 25;
         $this->start_page = 1;//in seconds
         $this->url = 'https://api.github.com/search/users';
         $this->q = "?q=language:$language+location:$location&sort=$sort&order=$order";
+        if($this->access_token) {
+            $this->q .= '&'.'access_token='.$this->access_token;
+        }
         //example
         //$q = '?q=language:php+location:mumbai&sort=followers&order=desc&page=2';
     }
@@ -41,19 +45,13 @@ class GetGitUsers {
 
             //respect the api rate limit
             //if($i != $this->start_page){
-            if(true){
-                $start_time = time();
-                while(1){    
-                    if((time() - $start_time) > $this->interval) break;
-                    print "Waiting remaining(".($this->interval - (time() - $start_time)) .") seconds.. \n";
-                    sleep(5);
-                }
-            }
+            $this->wait();
 
             print "Getting data for page($i)\n";
             if($i != $this->start_page ) $results = $this->getRequestData($i);
             foreach($results['items'] as $user){
 
+                $this->wait();
                 //get the user data
                 $user_details = $this->getUserData($user['url']);
 
@@ -65,6 +63,15 @@ class GetGitUsers {
     }
 
     //helper functions
+    private function wait(){    
+        $start_time = time();
+        while(1){    
+            if((time() - $start_time) > $this->interval) return;
+            print "Waiting remaining(".($this->interval - (time() - $start_time)) .") seconds.. \n";
+            sleep(5);
+        }
+    }
+
     private function saveUserData($user_details){    
         //insert into the db
         $id = $this->db->insert ('users', $user_details);
