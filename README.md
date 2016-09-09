@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://s13.postimg.org/5a1vswjyf/cat.gif" alt="Oh My Zsh">
+  <img src="https://s13.postimg.org/5a1vswjyf/cat.gif" alt="Download Git Users">
 </p>
 
 ABOUT
